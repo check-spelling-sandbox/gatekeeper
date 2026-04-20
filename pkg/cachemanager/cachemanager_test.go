@@ -31,7 +31,7 @@ var (
 	configMapGVK   = schema.GroupVersionKind{Version: "v1", Kind: "ConfigMap"}
 	podGVK         = schema.GroupVersionKind{Version: "v1", Kind: "Pod"}
 	nsGVK          = schema.GroupVersionKind{Version: "v1", Kind: "Namespace"}
-	nonExistentGVK = schema.GroupVersionKind{Version: "v1", Kind: "DoesNotExist"}
+	nonexistentGVK = schema.GroupVersionKind{Version: "v1", Kind: "DoesNotExist"}
 
 	configKey   = aggregator.Key{Source: "config", ID: "config"}
 	syncsetAKey = aggregator.Key{Source: "syncset", ID: "a"}
@@ -536,19 +536,19 @@ func TestCacheManager_UpsertSource_errorcases(t *testing.T) {
 				},
 				{
 					key:  syncsetAKey,
-					gvks: []schema.GroupVersionKind{podGVK, nonExistentGVK},
-					// UpsertSource will err out because of nonExistentGVK
+					gvks: []schema.GroupVersionKind{podGVK, nonexistentGVK},
+					// UpsertSource will err out because of nonexistentGVK
 					wantErr: true,
 				},
 				{
 					key:  syncsetBkey,
 					gvks: []schema.GroupVersionKind{nsGVK},
-					// this call will not error out even though we previously added a non existent gvk to a different sync source.
+					// this call will not error out even though we previously added a nonexistent gvk to a different sync source.
 					// this way the errors in watch manager caused by one sync source do not impact the other if they are not related
 					// to the gvks it specifies.
 				},
 			},
-			expectedGVKs: []schema.GroupVersionKind{configMapGVK, podGVK, nonExistentGVK, nsGVK},
+			expectedGVKs: []schema.GroupVersionKind{configMapGVK, podGVK, nonexistentGVK, nsGVK},
 		},
 	}
 
@@ -606,7 +606,7 @@ func TestCacheManager_RemoveSource(t *testing.T) {
 			expectedGVKs:    []schema.GroupVersionKind{podGVK, configMapGVK},
 		},
 		{
-			name: "remove non existing source",
+			name: "remove nonexistent source",
 			existingSources: []source{
 				{configKey, []schema.GroupVersionKind{podGVK}},
 			},
@@ -614,30 +614,30 @@ func TestCacheManager_RemoveSource(t *testing.T) {
 			expectedGVKs:    []schema.GroupVersionKind{podGVK},
 		},
 		{
-			name: "remove source with a non existing gvk",
+			name: "remove source with a nonexistent gvk",
 			existingSources: []source{
-				{configKey, []schema.GroupVersionKind{nonExistentGVK}},
+				{configKey, []schema.GroupVersionKind{nonexistentGVK}},
 			},
 			sourcesToRemove: []aggregator.Key{configKey},
 			expectedGVKs:    []schema.GroupVersionKind{},
 		},
 		{
-			name: "remove source from a watch set with a non existing gvk",
+			name: "remove source from a watch set with a nonexistent gvk",
 			existingSources: []source{
-				{configKey, []schema.GroupVersionKind{nonExistentGVK}},
+				{configKey, []schema.GroupVersionKind{nonexistentGVK}},
 				{syncsetAKey, []schema.GroupVersionKind{podGVK}},
 			},
 			sourcesToRemove: []aggregator.Key{syncsetAKey},
-			expectedGVKs:    []schema.GroupVersionKind{nonExistentGVK},
+			expectedGVKs:    []schema.GroupVersionKind{nonexistentGVK},
 		},
 		{
-			name: "remove source with non existent gvk from a watch set with a remaining non existing gvk",
+			name: "remove source with nonexistent gvk from a watch set with a remaining nonexistent gvk",
 			existingSources: []source{
-				{configKey, []schema.GroupVersionKind{nonExistentGVK}},
-				{syncsetAKey, []schema.GroupVersionKind{nonExistentGVK}},
+				{configKey, []schema.GroupVersionKind{nonexistentGVK}},
+				{syncsetAKey, []schema.GroupVersionKind{nonexistentGVK}},
 			},
 			sourcesToRemove: []aggregator.Key{syncsetAKey},
-			expectedGVKs:    []schema.GroupVersionKind{nonExistentGVK},
+			expectedGVKs:    []schema.GroupVersionKind{nonexistentGVK},
 		},
 	}
 

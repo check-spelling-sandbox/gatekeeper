@@ -435,7 +435,7 @@ func ValidateCatalogSchema(catalog *PolicyCatalog) error {
 		}
 		for _, policyName := range bundle.Policies {
 			if !policyNames[policyName] {
-				return fmt.Errorf("bundle %s references non-existent policy: %s", bundle.Name, policyName)
+				return fmt.Errorf("bundle %s references nonexistent policy: %s", bundle.Name, policyName)
 			}
 		}
 	}

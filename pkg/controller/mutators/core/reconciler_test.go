@@ -957,7 +957,7 @@ func TestReconciler_Reconcile_DeletePodStatus(t *testing.T) {
 
 	_, ok = c.objects[statusKey]
 	if ok {
-		t.Fatalf("got %v exists, want not exists", statusKey)
+		t.Fatalf("got %v exists, want nonexistent", statusKey)
 	}
 
 	var wantEvents mutationschema.IDSet

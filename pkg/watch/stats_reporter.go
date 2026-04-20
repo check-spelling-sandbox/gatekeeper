@@ -46,7 +46,7 @@ func newStatsReporter() (*reporter, error) {
 		}
 		_, err = meter.Int64ObservableGauge(
 			gvkIntentCountMetricName,
-			metric.WithDescription("The total number of Group/Version/Kinds that the watch manager has instructions to watch. This could differ from the actual count due to resources being pending, non-existent, or a failure of the watch manager to restart"),
+			metric.WithDescription("The total number of Group/Version/Kinds that the watch manager has instructions to watch. This could differ from the actual count due to resources being pending, nonexistent, or a failure of the watch manager to restart"),
 			metric.WithInt64Callback(r.observeGvkIntentCount),
 		)
 		if err != nil {

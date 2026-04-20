@@ -204,7 +204,7 @@ EOF
 }
 
 @test "gator policy handles missing catalog gracefully" {
-    # Use non-existent catalog
+    # Use nonexistent catalog
     export GATOR_CATALOG_URL="file:///nonexistent/catalog.yaml"
 
     run ${GATOR} policy update

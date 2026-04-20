@@ -120,7 +120,7 @@ func TestSaveAndLoadResults(t *testing.T) {
 func TestLoadBaseline_FileNotFound(t *testing.T) {
 	_, err := LoadBaseline("/nonexistent/path/baseline.json")
 	if err == nil {
-		t.Fatal("expected error for non-existent file")
+		t.Fatal("expected error for nonexistent file")
 	}
 }
 

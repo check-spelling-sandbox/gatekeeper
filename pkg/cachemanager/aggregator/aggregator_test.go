@@ -226,7 +226,7 @@ func Test_GVKAgreggator_Remove(t *testing.T) {
 			keyToRemove: Key{Source: "testSource", ID: "testID"},
 		},
 		{
-			name: "remove non existing key",
+			name: "remove nonexistent key",
 			toUpsert: []keyedGVKs{
 				{key: Key{Source: syncset, ID: "testID1"}, gvks: []schema.GroupVersionKind{g1v1k1, g1v1k2}},
 			},

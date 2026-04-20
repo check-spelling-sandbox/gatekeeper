@@ -87,7 +87,7 @@ func TestK8sClient_GetTemplate(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "test-policy", result.GetName())
 
-	// Get non-existent template
+	// Get nonexistent template
 	_, err = client.GetTemplate(context.Background(), "nonexistent")
 	assert.Error(t, err)
 }
@@ -137,7 +137,7 @@ func TestK8sClient_DeleteTemplate(t *testing.T) {
 	err := client.DeleteTemplate(context.Background(), "to-delete")
 	require.NoError(t, err)
 
-	// Delete non-existent template should not error
+	// Delete nonexistent template should not error
 	err = client.DeleteTemplate(context.Background(), "nonexistent")
 	require.NoError(t, err)
 }
@@ -299,7 +299,7 @@ metadata:
 		assert.Equal(t, 1, result.TemplatesInstalled)
 	})
 
-	t.Run("install non-existent policy", func(t *testing.T) {
+	t.Run("install nonexistent policy", func(t *testing.T) {
 		fakeClient := NewFakeClient()
 		fetcher := &FakeFetcher{}
 
@@ -403,7 +403,7 @@ func TestUninstall(t *testing.T) {
 		assert.Equal(t, "test-policy", result.Uninstalled[0])
 	})
 
-	t.Run("uninstall non-existent policy", func(t *testing.T) {
+	t.Run("uninstall nonexistent policy", func(t *testing.T) {
 		fakeClient := NewFakeClient()
 
 		opts := UninstallOptions{
@@ -1124,7 +1124,7 @@ func TestK8sClient_GetConstraint(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "require-labels", result.GetName())
 
-	// Get non-existent constraint
+	// Get nonexistent constraint
 	_, err = k8sClient.GetConstraint(context.Background(), gvr, "nonexistent")
 	assert.Error(t, err)
 }
@@ -1157,7 +1157,7 @@ func TestK8sClient_DeleteConstraint(t *testing.T) {
 	err = k8sClient.DeleteConstraint(context.Background(), gvr, "require-labels")
 	require.NoError(t, err)
 
-	// Delete non-existent should not error
+	// Delete nonexistent should not error
 	err = k8sClient.DeleteConstraint(context.Background(), gvr, "nonexistent")
 	require.NoError(t, err)
 }
