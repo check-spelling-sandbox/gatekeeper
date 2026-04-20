@@ -99,7 +99,7 @@ violation[{"msg": "denied!"}] {
 	// fs.Parse([]string{"--alsologtostderr", "-v=10"})
 	// klog.SetOutput(os.Stderr)
 
-	// Setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())

@@ -349,7 +349,7 @@ func TestReconcile(t *testing.T) {
 	// fs.Parse([]string{"--alsologtostderr", "-v=10"})
 	// klog.SetOutput(os.Stderr)
 
-	// Setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr, wm := testutils.SetupManager(t, cfg)
 	c := testclient.NewRetryClient(mgr.GetClient())
@@ -2145,7 +2145,7 @@ func TestReconcile_VAPBV1RecreatedWhenDeleted(t *testing.T) {
 func TestReconcile_DeleteConstraintResources(t *testing.T) {
 	logger.Info("Running test: Cancel the expectations when constraint gets deleted")
 
-	// Setup the Manager
+	// Set up the Manager
 	mgr, wm := testutils.SetupManager(t, cfg)
 	c := testclient.NewRetryClient(mgr.GetClient())
 

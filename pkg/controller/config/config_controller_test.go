@@ -304,7 +304,7 @@ func TestConfig_DeleteSyncResources(t *testing.T) {
 
 	g := gomega.NewGomegaWithT(t)
 
-	// setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
@@ -481,7 +481,7 @@ func TestConfig_CacheContents(t *testing.T) {
 	ctx, cancelFunc := context.WithCancel(context.Background())
 	defer cancelFunc()
 
-	// Setup the Manager and Controller.
+	// Set up the Manager and Controller.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
 	g := gomega.NewGomegaWithT(t)
@@ -598,7 +598,7 @@ func TestConfig_Retries(t *testing.T) {
 	}
 	instance := configFor([]schema.GroupVersionKind{nsGVK, configMapGVK})
 
-	// Setup the Manager and Controller.
+	// Set up the Manager and Controller.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
 

@@ -398,7 +398,7 @@ func Test_Registrar_Replay(t *testing.T) {
 		t.Fatalf("waiting for live watches: %v", err)
 	}
 
-	// Setup a second watcher, it should receive the same events replayed instead of live:
+	// Set up a second watcher, it should receive the same events replayed instead of live:
 	c2 := setupController("test-controller-2", gvk)
 	if err := waitForExpected(ctx, fixtures, c2, namespace); err != nil {
 		t.Fatalf("waiting for replayed watches: %v", err)
