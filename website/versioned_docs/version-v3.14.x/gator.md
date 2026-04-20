@@ -356,8 +356,8 @@ should include the resource(s) under test, the `ExpansionTemplate`(s), and
 optionally any Mutation CRs. The command will output a manifest containing the
 expanded resources.
 
-If the mutators or constraints use `spec.match.namespaceSelector`, the namespace the resource
-belongs to must be supplied in order to correctly evaluate the match criteria.
+If the mutators or constraints use `spec.match.namespaceSelector`, the namespace to which the
+resource belongs must be supplied in order to correctly evaluate the match criteria.
 If a resource is specified for expansion but its non-default namespace is not
 supplied, the command will exit 1. See the [non default namespace example](#non-default-namespace-example) below.
 
