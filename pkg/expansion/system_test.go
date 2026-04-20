@@ -683,7 +683,7 @@ func TestExpandResource(t *testing.T) {
 
 func noError(e error, t *testing.T) {
 	if e != nil {
-		t.Errorf("did want want error, but got %s", e)
+		t.Errorf("did not want error, but got %s", e)
 	}
 }
 
