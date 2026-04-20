@@ -44,7 +44,7 @@ There are three version tracks for the Gatekeeper project:
 1. Release Candidate (`vX.Y.Z-rc.B`)
 1. Stable (`vX.Y.Z`)
 
-After a minor release (`vX.Y.0`) has been released, we will immediately tag the master branch with `vX.Y+1.Z-beta.0` in preparation for our next minor release (`vX.Y+1.0`). We will periodically increment the beta version (e.g. `vX.Y+1.Z-beta.0` -> `vX.Y+1.Z-beta.1`) to give the users a chance to test bug fixes and experimental features we introduce to the master branch. However, we do not recommend using beta versions of Gatekeeper in a production environment.
+After a minor release (`vX.Y.0`) has been released, we will immediately tag the master branch with `vX.Y+1.Z-beta.0` in preparation for our next minor release (`vX.Y+1.0`). We will periodically increment the beta version (e.g. `vX.Y+1.Z-beta.0` -> `vX.Y+1.Z-beta.1`) to give users a chance to test bug fixes and experimental features we introduce to the master branch. However, we do not recommend using beta versions of Gatekeeper in a production environment.
 
 Once we are ready to release the new minor version, we will create a release branch (`release-X.Y+1`) from the master branch and create a release candidate tag (`vX.Y+1.Z-rc.0`) based on the release branch. This allows us to isolate the release candidates in its own branch so that future pull requests that are being merged to the master branch will not cause any regressions. Unlike beta, we only increment our release candidates (e.g. `vX.Y+1.Z-rc.0` -> `vX.Y+1.Z-rc.1`) when we decided to cherry-pick merged pull requests to the release branch. We also do not recommend using release candidates of Gatekeeper in a production environment.
 
