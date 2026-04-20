@@ -30,7 +30,7 @@ The evaluation is a call to `OPA`. This call produces one or more decisions. Eac
 
 ### open-policy agent(OPA)
 
-open-policy-agent(OPA) service is the policy engine for the kubernetes policy controller. It performs evaluations as called by `gatekeeper`. For our `audit` requirement OPA can not be used as a standalone. We also chose to use OPA as a service (instead of using as a lib) as it allows to
+open-policy-agent(OPA) service is the policy engine for the kubernetes policy controller. It performs evaluations as called by `gatekeeper`. For our `audit` requirement OPA cannot be used as a standalone. We also chose to use OPA as a service (instead of using as a lib) as it allows to
 
 1. Decouple the kubernetes admission controller logic from the policy engine.
 2. When needed, the policy engine can be hosted outside of the cluster.
