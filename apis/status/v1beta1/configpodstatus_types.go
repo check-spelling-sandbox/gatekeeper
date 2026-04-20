@@ -54,7 +54,7 @@ func init() {
 	SchemeBuilder.Register(&ConfigPodStatus{}, &ConfigPodStatusList{})
 }
 
-// NewConfigStatusForPod returns an config status object
+// NewConfigStatusForPod returns a config status object
 // that has been initialized with the bare minimum of fields to make it functional
 // with the config status controller.
 func NewConfigStatusForPod(pod *corev1.Pod, configNamespace string, configName string, scheme *runtime.Scheme) (*ConfigPodStatus, error) {

@@ -50,7 +50,7 @@ func Test_ObjectTracker_Unpopulated_Is_Unsatisfied(t *testing.T) {
 	}
 }
 
-// Verify that an populated tracker with no expectations is satisfied.
+// Verify that a populated tracker with no expectations is satisfied.
 func Test_ObjectTracker_No_Expectations(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 	ot.ExpectationsDone()
