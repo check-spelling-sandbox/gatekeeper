@@ -197,7 +197,7 @@ spec:
           max_cpu_orig := input.parameters.cpu
           max_cpu := canonify_cpu(max_cpu_orig)
           cpu > max_cpu
-          msg := sprintf("container <%v> cpu limit <%v> is higher than the maximum allowed of <%v>", [container.name, cpu_orig, max_cpu_orig])
+          msg := sprintf("container <%v> cpu limit <%v> exceeds the maximum allowed of <%v>", [container.name, cpu_orig, max_cpu_orig])
         }
 
         general_violation[{"msg": msg, "field": field}] {
@@ -207,5 +207,5 @@ spec:
           max_mem_orig := input.parameters.memory
           max_mem := canonify_mem(max_mem_orig)
           mem > max_mem
-          msg := sprintf("container <%v> memory limit <%v> is higher than the maximum allowed of <%v>", [container.name, mem_orig, max_mem_orig])
+          msg := sprintf("container <%v> memory limit <%v> exceeds the maximum allowed of <%v>", [container.name, mem_orig, max_mem_orig])
         }
