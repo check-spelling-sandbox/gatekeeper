@@ -65,7 +65,7 @@ deny[{
 Policy consists of:
 
 * `id`: uniquely identifies a policy on a kubernetes cluster.
-* `resource`: allows filtering on the resource the policy is targeting, this includes the `kind` which same as kubernetes definition of `kind` of the object,`namespace` is the namespace and name of the object being evaluated.
+* `resource`: allows filtering on the resource targeted by the policy, this includes the `kind` which same as kubernetes definition of `kind` of the object,`namespace` is the namespace and name of the object being evaluated.
 * `resolution`: the decision of a single opa policy query, consists of `message` and optionally `patches` .Note that the patch field is an array of JSON patch operations. This means a single policy can patch different parts of the object being evaluated.
 
 ### Examples
