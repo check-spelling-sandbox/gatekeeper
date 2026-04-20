@@ -84,13 +84,13 @@ func PodStatusToExpansionTemplateMapper(selfOnly bool) handler.TypedMapFunc[*v1b
 		labels := obj.GetLabels()
 		name, ok := labels[v1beta1.ExpansionTemplateNameLabel]
 		if !ok {
-			log.Error(fmt.Errorf("expansion template status resource with no mapping label: %s", obj.GetName()), "missing label while attempting to map a expansion template status resource")
+			log.Error(fmt.Errorf("expansion template status resource with no mapping label: %s", obj.GetName()), "missing label while attempting to map an expansion template status resource")
 			return nil
 		}
 		if selfOnly {
 			pod, ok := labels[v1beta1.PodLabel]
 			if !ok {
-				log.Error(fmt.Errorf("expansion template status resource with no pod label: %s", obj.GetName()), "missing label while attempting to map a expansion template status resource")
+				log.Error(fmt.Errorf("expansion template status resource with no pod label: %s", obj.GetName()), "missing label while attempting to map an expansion template status resource")
 			}
 			// Do not attempt to reconcile the resource when other pods have changed their status
 			if pod != util.GetPodName() {
