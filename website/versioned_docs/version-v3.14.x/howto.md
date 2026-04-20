@@ -138,4 +138,4 @@ kubectl get constraints
 ```
 
 ### Input Review
-You can view information on the `input.review` object that Gatekeeper takes as input [here](./input.md)
+You can view information on the [`input.review` object](./input.md) that Gatekeeper takes.
