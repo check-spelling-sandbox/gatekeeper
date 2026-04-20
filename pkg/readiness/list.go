@@ -91,6 +91,6 @@ func retryNone(_ error) bool {
 // *NoResourceMatchError, *NoKindMatchError, e.g. a resource was not registered to
 // the RESTMapper.
 func retryUnlessUnregistered(err error) bool {
-	// NoKindMatchError is non-recoverable, otherwise we'll retry.
+	// NoKindMatchError is non-recoverable; otherwise, we'll retry.
 	return !meta.IsNoMatchError(err)
 }

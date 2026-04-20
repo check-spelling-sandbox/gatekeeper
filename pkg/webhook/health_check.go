@@ -25,7 +25,7 @@ func NewTLSChecker(certDir, host string, port int) func(*http.Request) error {
 	//
 	//nolint:gosec
 	tr.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
-	// disable keep alives to ensure that http connection aren't reused, otherwise the check may
+	// disable keep alives to ensure that http connection aren't reused; otherwise, the check may
 	// fail if the cert was rotated in between
 	tr.DisableKeepAlives = true
 	insecureClient := &http.Client{Transport: tr}

@@ -129,7 +129,7 @@ func newTracker(lister Lister, mutationEnabled, externalDataEnabled, expansionEn
 }
 
 // CheckSatisfied implements healthz.Checker to report readiness based on tracker status.
-// Returns nil if all expectations have been satisfied, otherwise returns an error.
+// Returns nil if all expectations have been satisfied; otherwise, returns an error.
 func (t *Tracker) CheckSatisfied(_ *http.Request) error {
 	if !t.Satisfied() {
 		return errors.New("expectations not satisfied")
@@ -959,7 +959,7 @@ func (t *Tracker) makeDataTrackerFor(gvk schema.GroupVersionKind, dt Expectation
 			Version: gvk.Version,
 			Kind:    gvk.Kind + "List",
 		})
-		// NoKindMatchError is non-recoverable, otherwise we'll retry.
+		// NoKindMatchError is non-recoverable; otherwise, we'll retry.
 		listerRetryPredicate := retryUnlessUnregistered
 		if t.trackListerPredicateOverride != nil {
 			listerRetryPredicate = t.trackListerPredicateOverride
