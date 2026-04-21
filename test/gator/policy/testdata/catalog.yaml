@@ -59,8 +59,8 @@ policies:
       - pod-security-baseline-mock
 
   # Policy with newer version available (for upgrade testing)
-  - name: test-upgradeable
+  - name: test-upgradable
     version: v2.0.0
     description: "Test policy for testing upgrades (v2.0.0 available)"
     category: general
-    templatePath: templates/upgradeable/template-v2.yaml
+    templatePath: templates/upgradable/template-v2.yaml
