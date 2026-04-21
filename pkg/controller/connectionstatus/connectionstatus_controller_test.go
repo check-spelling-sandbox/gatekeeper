@@ -174,7 +174,7 @@ func TestReconcile_E2E(t *testing.T) {
 
 		// Test Delete of the Connection object
 		g.Expect(k8sClient.Delete(ctx, &connObj)).Should(gomega.Succeed(), "Deleting the connection object should succeed")
-		// If Connection object deleted the pod status not necessarily deleted it wil persist
+		// If Connection object deleted the pod status not necessarily deleted it will persist
 		g.Eventually(func() bool {
 			err := k8sClient.Get(ctx, typeConnectionPodStatusNamespacedName, &connPodStatusObj)
 			if err != nil && apierrors.IsNotFound(err) {
