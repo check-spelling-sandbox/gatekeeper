@@ -134,7 +134,7 @@ func Test(unstrucs []*unstructured.Unstructured, omitGVKManifest bool) (map[stri
 	missingReqs := map[string]parser.SyncRequirements{}
 
 	for templ, reqs := range templates {
-		// Fetch syncrequirements from template
+		// Fetch SyncRequirements from template
 		for _, requirement := range reqs {
 			requirementMet := false
 			for gvk := range requirement {
