@@ -8,7 +8,7 @@ import (
 
 	"github.com/open-policy-agent/cert-controller/pkg/rotator"
 	"github.com/open-policy-agent/frameworks/constraint/pkg/apis/constraints"
-	externadatav1alpha1 "github.com/open-policy-agent/frameworks/constraint/pkg/apis/externaldata/v1alpha1"
+	externaldatav1alpha1 "github.com/open-policy-agent/frameworks/constraint/pkg/apis/externaldata/v1alpha1"
 	templatesv1beta1 "github.com/open-policy-agent/frameworks/constraint/pkg/apis/templates/v1beta1"
 	constraintclient "github.com/open-policy-agent/frameworks/constraint/pkg/client"
 	"github.com/open-policy-agent/frameworks/constraint/pkg/client/drivers/rego"
@@ -134,16 +134,16 @@ spec:
 	withMaxThreads = " with max threads"
 )
 
-func validProvider() *externadatav1alpha1.Provider {
-	return &externadatav1alpha1.Provider{
+func validProvider() *externaldatav1alpha1.Provider {
+	return &externaldatav1alpha1.Provider{
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: externadatav1alpha1.SchemeGroupVersion.String(),
+			APIVersion: externaldatav1alpha1.SchemeGroupVersion.String(),
 			Kind:       "Provider",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "test-provider",
 		},
-		Spec: externadatav1alpha1.ProviderSpec{
+		Spec: externaldatav1alpha1.ProviderSpec{
 			URL:      "https://localhost:8080/validate",
 			Timeout:  1,
 			CABundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUIwekNDQVgyZ0F3SUJBZ0lKQUkvTTdCWWp3Qit1TUEwR0NTcUdTSWIzRFFFQkJRVUFNRVV4Q3pBSkJnTlYKQkFZVEFrRlZNUk13RVFZRFZRUUlEQXBUYjIxbExWTjBZWFJsTVNFd0h3WURWUVFLREJoSmJuUmxjbTVsZENCWAphV1JuYVhSeklGQjBlU0JNZEdRd0hoY05NVEl3T1RFeU1qRTFNakF5V2hjTk1UVXdPVEV5TWpFMU1qQXlXakJGCk1Rc3dDUVlEVlFRR0V3SkJWVEVUTUJFR0ExVUVDQXdLVTI5dFpTMVRkR0YwWlRFaE1COEdBMVVFQ2d3WVNXNTAKWlhKdVpYUWdWMmxrWjJsMGN5QlFkSGtnVEhSa01Gd3dEUVlKS29aSWh2Y05BUUVCQlFBRFN3QXdTQUpCQU5MSgpoUEhoSVRxUWJQa2xHM2liQ1Z4d0dNUmZwL3Y0WHFoZmRRSGRjVmZIYXA2TlE1V29rLzR4SUErdWkzNS9NbU5hCnJ0TnVDK0JkWjF0TXVWQ1BGWmNDQXdFQUFhTlFNRTR3SFFZRFZSME9CQllFRkp2S3M4UmZKYVhUSDA4VytTR3YKelF5S24wSDhNQjhHQTFVZEl3UVlNQmFBRkp2S3M4UmZKYVhUSDA4VytTR3Z6UXlLbjBIOE1Bd0dBMVVkRXdRRgpNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUZCUUFEUVFCSmxmZkpIeWJqREd4Uk1xYVJtRGhYMCs2djAyVFVLWnNXCnI1UXVWYnBRaEg2dSswVWdjVzBqcDlRd3B4b1BUTFRXR1hFV0JCQnVyeEZ3aUNCaGtRK1YKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=",
@@ -1044,7 +1044,7 @@ func TestValidateConfigResource(t *testing.T) {
 func TestValidateProvider(t *testing.T) {
 	tests := []struct {
 		name     string
-		provider *externadatav1alpha1.Provider
+		provider *externaldatav1alpha1.Provider
 		want     bool
 		wantErr  bool
 	}{
@@ -1056,15 +1056,15 @@ func TestValidateProvider(t *testing.T) {
 		},
 		{
 			name: "invalid provider",
-			provider: func() *externadatav1alpha1.Provider {
-				return &externadatav1alpha1.Provider{}
+			provider: func() *externaldatav1alpha1.Provider {
+				return &externaldatav1alpha1.Provider{}
 			}(),
 			want:    false,
 			wantErr: true,
 		},
 		{
 			name: "provider with no CA",
-			provider: func() *externadatav1alpha1.Provider {
+			provider: func() *externaldatav1alpha1.Provider {
 				p := validProvider()
 				p.Spec.CABundle = ""
 				return p
@@ -1074,7 +1074,7 @@ func TestValidateProvider(t *testing.T) {
 		},
 		{
 			name: "provider with big name",
-			provider: func() *externadatav1alpha1.Provider {
+			provider: func() *externaldatav1alpha1.Provider {
 				p := validProvider()
 				p.Name = "abignameabignameabignameabignameabignameabignameabignameabigname"
 				return p
@@ -1090,7 +1090,7 @@ func TestValidateProvider(t *testing.T) {
 
 			req := &admission.Request{
 				AdmissionRequest: admissionv1.AdmissionRequest{
-					Kind:   metav1.GroupVersionKind(externadatav1alpha1.SchemeGroupVersion.WithKind("Provider")),
+					Kind:   metav1.GroupVersionKind(externaldatav1alpha1.SchemeGroupVersion.WithKind("Provider")),
 					Object: *b,
 					Name:   tt.provider.Name,
 				},
