@@ -266,7 +266,7 @@ teardown_file() {
 }
 
 @test "container limits test" {
-  kubectl apply -f ${BATS_TESTS_DIR}/templates/k8scontainterlimits_template.yaml
+  kubectl apply -f ${BATS_TESTS_DIR}/templates/k8scontainerlimits_template.yaml
   wait_for_process ${WAIT_TIME} ${SLEEP_TIME} "kubectl apply -f ${BATS_TESTS_DIR}/constraints/containers_must_be_limited.yaml"
   wait_for_process ${WAIT_TIME} ${SLEEP_TIME} "constraint_enforced k8scontainerlimits container-must-have-limits"
 
