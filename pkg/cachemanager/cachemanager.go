@@ -447,7 +447,7 @@ func (c *CacheManager) manageCache(ctx context.Context) {
 
 				// stop any goroutines that were relisting before
 				// as we may no longer be interested in those gvks
-				// and wait with a timeout for the child gorountine to stop.
+				// and wait with a timeout for the child goroutine to stop.
 				close(relistStopChan)
 				select {
 				case <-waitToCloseChan:
