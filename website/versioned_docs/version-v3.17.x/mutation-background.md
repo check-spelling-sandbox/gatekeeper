@@ -43,7 +43,7 @@ Not only are mutators chained, but they recurse as well. This is not only due to
 but also due to the nature of the Kubernetes control plane itself, since controllers may modify resources periodically.
 Whether because of the reinvocation policy, or because of control plane behavior, mutators are likely to
 operate on their own output. This has some operational risk. Consider a mutating webhook that prepends a hostname to a docker
-image reference (e.g. prepend `gcr.io/`), if written naievly, each successive mutation would add another prefix, leading to results
+image reference (e.g. prepend `gcr.io/`), if written naively, each successive mutation would add another prefix, leading to results
 like `gcr.io/gcr.io/gcr.io/my-favorite-image:latest`. Because of this, Kubernetes requires mutation webhooks to be
 [idempotent](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#idempotence).
 
