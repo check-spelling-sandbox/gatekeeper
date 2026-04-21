@@ -650,7 +650,7 @@ func TestConfig_Retries(t *testing.T) {
 	rec.reader = fakes.SpyReader{
 		Reader: mgr.GetCache(),
 		ListFunc: func(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-			// return as many syntenthic failures as there are registered for this kind
+			// return as many synthetic failures as there are registered for this kind
 			if fi.CheckFailures(list.GetObjectKind().GroupVersionKind().Kind) {
 				return fmt.Errorf("synthetic failure")
 			}

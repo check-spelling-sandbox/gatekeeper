@@ -63,7 +63,7 @@ func TestCacheManager_replay_retries(t *testing.T) {
 	reader := fakes.SpyReader{
 		Reader: c,
 		ListFunc: func(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-			// return as many syntenthic failures as there are registered for this kind
+			// return as many synthetic failures as there are registered for this kind
 			if fi.CheckFailures(list.GetObjectKind().GroupVersionKind().Kind) {
 				return fmt.Errorf("synthetic failure")
 			}
