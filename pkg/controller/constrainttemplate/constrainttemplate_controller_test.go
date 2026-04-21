@@ -758,9 +758,9 @@ func TestReconcile(t *testing.T) {
 		}
 	})
 
-	t.Run("VapBinding should not be created with missing CEL", func(t *testing.T) {
+	t.Run("VapBinding should not be created without CEL", func(t *testing.T) {
 		suffix := "VapBindingShouldNotBeCreatedMissingCEL"
-		logger.Info("Running test: VapBinding should not be created with missing CEL")
+		logger.Info("Running test: VapBinding should not be created without CEL")
 		constraintTemplate := makeReconcileConstraintTemplate(suffix)
 		cstr := newDenyAllCstr(suffix)
 		t.Cleanup(testutils.DeleteObjectAndConfirm(ctx, t, c, expectedCRD(suffix)))
@@ -819,7 +819,7 @@ func TestReconcile(t *testing.T) {
 
 	t.Run("Error should not be present on constraint when VAP generation if off and VAPB generation is on for templates without CEL", func(t *testing.T) {
 		suffix := "ErrorShouldNotBePresentOnConstraint"
-		logger.Info("Running test: Error should not be present on constraint when VAP generation is off and VAPB generation is on for templates wihout CEL")
+		logger.Info("Running test: Error should not be present on constraint when VAP generation is off and VAPB generation is on for templates without CEL")
 		require.NoError(t, flag.CommandLine.Parse([]string{"--default-create-vap-for-templates", "false"}))
 		t.Cleanup(func() {
 			require.NoError(t, flag.CommandLine.Parse([]string{"--default-create-vap-for-templates", "true"}))
