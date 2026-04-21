@@ -297,7 +297,7 @@ func Test_GVKAggreggator_E2E(t *testing.T) {
 
 	// new upserts
 	b.Upsert(key1, gvksVersion1) // key1 no longer associates g2v2k1, but key2 does
-	b.Upsert(key2, gvksVersion2) // key2 no longer associaates g1v1k2, but key1 does
+	b.Upsert(key2, gvksVersion2) // key2 no longer associates g1v1k2, but key1 does
 
 	// require that every gvk that was just added now and before to be present
 	for _, gvk := range append(append([]schema.GroupVersionKind{}, gvksVersion1...), gvksVersion2...) {
