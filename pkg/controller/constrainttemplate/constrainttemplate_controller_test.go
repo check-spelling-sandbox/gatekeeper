@@ -912,7 +912,7 @@ func TestReconcile(t *testing.T) {
 			// check if vapbinding resource exists now
 			vapBinding := &admissionregistrationv1beta1.ValidatingAdmissionPolicyBinding{}
 			if err := c.Get(ctx, types.NamespacedName{Name: transform.GetVAPBindingName(cstr.GetKind(), cstr.GetName())}, vapBinding); err != nil {
-				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets covarage time > 30s to cover the default wait.
+				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets coverage time > 30s to cover the default wait.
 				time.Sleep(10 * time.Millisecond)
 				return err
 			}
@@ -1381,7 +1381,7 @@ func TestReconcile(t *testing.T) {
 			// check if vapbinding resource exists now
 			vapBinding := &admissionregistrationv1.ValidatingAdmissionPolicyBinding{}
 			if err := c.Get(ctx, types.NamespacedName{Name: transform.GetVAPBindingName(cstr.GetKind(), cstr.GetName())}, vapBinding); err != nil {
-				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets covarage time > 30s to cover the default wait.
+				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets coverage time > 30s to cover the default wait.
 				time.Sleep(10 * time.Millisecond)
 				return err
 			}
