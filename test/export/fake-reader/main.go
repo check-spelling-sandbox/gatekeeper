@@ -25,7 +25,7 @@ func main() {
 		// Find the latest created file in dirPath
 		latestFile, files, err := getLatestFile(dirPath)
 		if err != nil {
-			log.Println("Latest file is not found, retring in 5 seconds", err)
+			log.Println("Latest file is not found, retrying in 5 seconds", err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
