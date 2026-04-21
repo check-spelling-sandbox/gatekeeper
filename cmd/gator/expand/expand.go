@@ -55,7 +55,7 @@ const (
 	stringJSON = "json"
 	stringYAML = "yaml"
 
-	delimeter = "---"
+	delimiter = "---"
 )
 
 func init() {
@@ -136,7 +136,7 @@ func resourcesToString(resources []*unstructured.Unstructured, format string) st
 	for i, r := range resources {
 		output += conversionFunc(r)
 		if i != len(resources)-1 {
-			output += fmt.Sprintf("%s\n", delimeter)
+			output += fmt.Sprintf("%s\n", delimiter)
 		}
 	}
 	return output
