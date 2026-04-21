@@ -439,7 +439,7 @@ func (c *CacheManager) manageCache(ctx context.Context) {
 				if !c.needToList {
 					// this means that there are no changes needed
 					// such that any gvks need to be relisted.
-					// any in flight goroutines can finish relisiting.
+					// any in flight goroutines can finish relisting.
 					return
 				}
 
