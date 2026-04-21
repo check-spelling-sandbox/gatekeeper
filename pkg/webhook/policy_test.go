@@ -31,7 +31,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
-	k8schema "k8s.io/apimachinery/pkg/runtime/schema"
+	k8sschema "k8s.io/apimachinery/pkg/runtime/schema"
 	ctrlclient "sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"
 	"sigs.k8s.io/yaml"
@@ -189,7 +189,7 @@ violation[{"msg": msg}] {
 func validRegoTemplateConstraint() *unstructured.Unstructured {
 	u := &unstructured.Unstructured{}
 
-	u.SetGroupVersionKind(k8schema.GroupVersionKind{
+	u.SetGroupVersionKind(k8sschema.GroupVersionKind{
 		Group:   constraints.Group,
 		Version: "v1beta1",
 		Kind:    "K8sGoodRego",
@@ -221,8 +221,8 @@ func (f *nsGetter) IsObjectNamespaced(_ runtime.Object) (bool, error) {
 	return false, nil
 }
 
-func (f *nsGetter) GroupVersionKindFor(_ runtime.Object) (k8schema.GroupVersionKind, error) {
-	return k8schema.GroupVersionKind{}, nil
+func (f *nsGetter) GroupVersionKindFor(_ runtime.Object) (k8sschema.GroupVersionKind, error) {
+	return k8sschema.GroupVersionKind{}, nil
 }
 
 func (f *nsGetter) SubResource(_ string) ctrlclient.SubResourceClient {
@@ -237,7 +237,7 @@ func (f *nsGetter) Get(_ context.Context, key ctrlclient.ObjectKey, obj ctrlclie
 		return nil
 	}
 
-	return k8serrors.NewNotFound(k8schema.GroupResource{Resource: "namespaces"}, key.Name)
+	return k8serrors.NewNotFound(k8sschema.GroupResource{Resource: "namespaces"}, key.Name)
 }
 
 type errorNSGetter struct {
@@ -248,8 +248,8 @@ func (f *errorNSGetter) IsObjectNamespaced(_ runtime.Object) (bool, error) {
 	return false, nil
 }
 
-func (f *errorNSGetter) GroupVersionKindFor(_ runtime.Object) (k8schema.GroupVersionKind, error) {
-	return k8schema.GroupVersionKind{}, nil
+func (f *errorNSGetter) GroupVersionKindFor(_ runtime.Object) (k8sschema.GroupVersionKind, error) {
+	return k8sschema.GroupVersionKind{}, nil
 }
 
 func (f *errorNSGetter) SubResource(_ string) ctrlclient.SubResourceClient {
@@ -257,7 +257,7 @@ func (f *errorNSGetter) SubResource(_ string) ctrlclient.SubResourceClient {
 }
 
 func (f *errorNSGetter) Get(_ context.Context, key ctrlclient.ObjectKey, _ ctrlclient.Object, _ ...ctrlclient.GetOption) error {
-	return k8serrors.NewNotFound(k8schema.GroupResource{Resource: "namespaces"}, key.Name)
+	return k8serrors.NewNotFound(k8sschema.GroupResource{Resource: "namespaces"}, key.Name)
 }
 
 func TestReviewRequest(t *testing.T) {
@@ -825,7 +825,7 @@ func TestTracing(t *testing.T) {
 
 func newConstraint(kind, name string, enforcementAction string, t *testing.T) *unstructured.Unstructured {
 	c := &unstructured.Unstructured{}
-	c.SetGroupVersionKind(k8schema.GroupVersionKind{
+	c.SetGroupVersionKind(k8sschema.GroupVersionKind{
 		Group:   "constraints.gatekeeper.sh",
 		Version: "v1alpha1",
 		Kind:    kind,
