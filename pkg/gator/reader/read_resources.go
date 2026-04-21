@@ -115,7 +115,7 @@ func ToStructured(scheme *runtime.Scheme, u *unstructured.Unstructured) (runtime
 	}
 
 	// YAML parsing doesn't properly handle ObjectMeta, so we must
-	// marshal/unmashal through JSON.
+	// marshal/unmarshal through JSON.
 	jsonBytes, err := u.MarshalJSON()
 	if err != nil {
 		// Indicates a bug in unstructured.MarshalJSON(). Any Unstructured
