@@ -61,7 +61,7 @@ func newMissingComponentsError() missingComponentsError {
 func newDomainLikePathError(path string) domainLikePathError {
 	return domainLikePathError{
 		baseError{
-			fmt.Sprintf("assignDomain must be set if the first part of assignPath %q can be interpretted as part of a domain", path),
+			fmt.Sprintf("assignDomain must be set if the first part of assignPath %q can be interpreted as part of a domain", path),
 		},
 	}
 }
