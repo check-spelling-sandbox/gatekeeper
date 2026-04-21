@@ -171,7 +171,7 @@ func (in *Source) GetValidations() ([]cel.ExpressionAccessor, error) {
 	return validations, nil
 }
 
-func (in *Source) GetV1Beta1Validatons() ([]admissionv1beta1.Validation, error) {
+func (in *Source) GetV1Beta1Validations() ([]admissionv1beta1.Validation, error) {
 	var validations []admissionv1beta1.Validation
 	for _, v := range in.Validations {
 		validations = append(validations, admissionv1beta1.Validation{
