@@ -36,7 +36,7 @@ func TestCreate(t *testing.T) {
 			errorMsg:            "invalid type assertion, config is not in expected format",
 		},
 		{
-			name:                "config with missing component",
+			name:                "config missing a component",
 			config:              map[string]interface{}{"enableBatching": true},
 			expectedConnections: 1,
 			errorMsg:            "failed to get value of component",
