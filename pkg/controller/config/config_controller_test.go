@@ -988,11 +988,11 @@ type testExpectations interface {
 	IsExpecting(gvk schema.GroupVersionKind, nsName types.NamespacedName) bool
 }
 
-func deleteResource(ctx context.Context, c client.Client, resounce *unstructured.Unstructured) error {
+func deleteResource(ctx context.Context, c client.Client, resource *unstructured.Unstructured) error {
 	if ctx.Err() != nil {
 		ctx = context.Background()
 	}
-	err := c.Delete(ctx, resounce)
+	err := c.Delete(ctx, resource)
 	if apierrors.IsNotFound(err) {
 		// resource does not exist, this is good
 		return nil

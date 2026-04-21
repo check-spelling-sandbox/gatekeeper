@@ -270,8 +270,8 @@ func TestCacheManager_instance_updates(t *testing.T) {
 	}, eventuallyTimeout, eventuallyTicker)
 }
 
-func deleteResource(ctx context.Context, c client.Client, resounce *unstructured.Unstructured) error {
-	err := c.Delete(ctx, resounce)
+func deleteResource(ctx context.Context, c client.Client, resource *unstructured.Unstructured) error {
+	err := c.Delete(ctx, resource)
 	if apierrors.IsNotFound(err) {
 		// resource does not exist, this is good
 		return nil
