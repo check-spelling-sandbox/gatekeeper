@@ -811,7 +811,7 @@ func TestReconcile(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		err := isConstraintStatuErrorAsExpected(ctx, c, suffix, true, constraint.ErrVAPConditionsNotSatisfied.Error())
+		err := isConstraintStatusErrorAsExpected(ctx, c, suffix, true, constraint.ErrVAPConditionsNotSatisfied.Error())
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -837,7 +837,7 @@ func TestReconcile(t *testing.T) {
 			logger.Error(err, "create cstr")
 			t.Fatal(err)
 		}
-		err := isConstraintStatuErrorAsExpected(ctx, c, suffix, false, "")
+		err := isConstraintStatusErrorAsExpected(ctx, c, suffix, false, "")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -2331,7 +2331,7 @@ func stringSliceFromOps(ops []admissionregistrationv1.OperationType) []string {
 	return result
 }
 
-func isConstraintStatuErrorAsExpected(ctx context.Context, c client.Client, suffix string, wantErr bool, errMsg string) error {
+func isConstraintStatusErrorAsExpected(ctx context.Context, c client.Client, suffix string, wantErr bool, errMsg string) error {
 	return retry.OnError(testutils.ConstantRetry, func(_ error) bool {
 		return true
 	}, func() error {
