@@ -31,7 +31,7 @@ func init() {
 
 // Reads a list of unstructured objects and a string containing supported GVKs and
 // outputs a set of missing sync requirements per template and ingestion problems per template.
-func Test(unstrucs []*unstructured.Unstructured, omitGVKManifest bool) (map[string]parser.SyncRequirements, map[string]error, error) {
+func Test(unstructs []*unstructured.Unstructured, omitGVKManifest bool) (map[string]parser.SyncRequirements, map[string]error, error) {
 	gvkAggregator := aggregator.NewGVKAggregator()
 	templates := map[*templates.ConstraintTemplate]parser.SyncRequirements{}
 	templateErrs := map[string]error{}
@@ -39,7 +39,7 @@ func Test(unstrucs []*unstructured.Unstructured, omitGVKManifest bool) (map[stri
 	var gvkManifest *gvkmanifestv1alpha1.GVKManifest
 	var err error
 
-	for _, obj := range unstrucs {
+	for _, obj := range unstructs {
 		switch {
 		case reader.IsSyncSet(obj):
 			syncSet, err := reader.ToSyncSet(scheme, obj)

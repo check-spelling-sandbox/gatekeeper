@@ -67,15 +67,15 @@ func init() {
 }
 
 func run(_ *cobra.Command, _ []string) {
-	unstrucs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
+	unstructs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
 	if err != nil {
 		util.ErrFatalf("reading: %v", err)
 	}
-	if len(unstrucs) == 0 {
+	if len(unstructs) == 0 {
 		util.ErrFatalf("no input data identified")
 	}
 
-	resultants, err := expand.Expand(unstrucs)
+	resultants, err := expand.Expand(unstructs)
 	if err != nil {
 		util.ErrFatalf("error expanding resources: %v", err)
 	}

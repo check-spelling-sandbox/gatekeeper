@@ -40,15 +40,15 @@ func init() {
 }
 
 func run(_ *cobra.Command, _ []string) {
-	unstrucs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
+	unstructs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
 	if err != nil {
 		cmdutils.ErrFatalf("reading: %v", err)
 	}
-	if len(unstrucs) == 0 {
+	if len(unstructs) == 0 {
 		cmdutils.ErrFatalf("no input data identified")
 	}
 
-	missingRequirements, templateErrors, err := test.Test(unstrucs, flagOmitGVKManifest)
+	missingRequirements, templateErrors, err := test.Test(unstructs, flagOmitGVKManifest)
 	if err != nil {
 		cmdutils.ErrFatalf("checking: %v", err)
 	}
