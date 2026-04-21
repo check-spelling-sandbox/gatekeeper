@@ -9,7 +9,7 @@ deny[{
         "namespace": namespace,
         "name": name,
     },
-	"resolution":  {"message": "Your're not allowed to create/update/delete StorageClasses 'cinder'"},
+	"resolution":  {"message": "You aren't allowed to create/update/delete StorageClasses 'cinder'"},
 }] {
 	matches[[kind, namespace, name, resource]]
 

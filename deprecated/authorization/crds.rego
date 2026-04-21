@@ -9,7 +9,7 @@ deny[{
 		"namespace": namespace,
 		"name": name,
 	},
-	"resolution": {"message": "Your're not allowed to create/update/delete CRDs of the group 'crd.projectcalico.org'"},
+	"resolution": {"message": "You aren't allowed to create/update/delete CRDs of the group 'crd.projectcalico.org'"},
 }] {
 	matches[[kind, namespace, name, resource]]
 
@@ -25,7 +25,7 @@ deny[{
 		"namespace": namespace,
 		"name": name,
 	},
-	"resolution": {"message": "Your're not allowed to create/update/delete resources of the group 'crd.projectcalico.org'"},
+	"resolution": {"message": "You aren't allowed to create/update/delete resources of the group 'crd.projectcalico.org'"},
 }] {
 	matches[[kind, namespace, name, resource]]
 

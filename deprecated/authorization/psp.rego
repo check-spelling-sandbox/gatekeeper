@@ -9,7 +9,7 @@ deny[{
         "namespace": namespace,
         "name": name,
     },
-	"resolution": {"message": "Your're not allowed to use the privileged PodSecurityPolicies in pods outside of kube-system and istio-system"},
+	"resolution": {"message": "You aren't allowed to use the privileged PodSecurityPolicies in pods outside of kube-system and istio-system"},
 }] {
     matches[[kind, namespace, name, resource]]
 

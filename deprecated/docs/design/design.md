@@ -103,7 +103,7 @@ package authorization
 deny[{
  	"id": "exec-pods-kube-system-istio-system",
  	"resource": {"kind": "pods","namespace": namespace,"name": name},
- 	"resolution": {"message": "Your're not allowed to exec/cp on Pods in kube-system & istio-system"},
+ 	"resolution": {"message": "You aren't allowed to exec/cp on Pods in kube-system & istio-system"},
 }]
 {
  	matches[["pods", namespace, name, resource]]
