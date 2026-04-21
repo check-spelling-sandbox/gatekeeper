@@ -385,7 +385,7 @@ func Test_Registrar_Replay(t *testing.T) {
 	// Create some resources
 	for _, obj := range fixtures {
 		if ctx.Err() != nil {
-			t.Fatalf("timout while creating fixtures")
+			t.Fatalf("timeout while creating fixtures")
 		}
 		err := c.Create(ctx, obj)
 		if err != nil {
