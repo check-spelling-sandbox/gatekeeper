@@ -207,7 +207,7 @@ func TestRegistrar_AddWatch_Idempotent(t *testing.T) {
 		},
 	}
 	if !reflect.DeepEqual(expected, managed) {
-		t.Errorf("unexpected manged set: %+v", expected)
+		t.Errorf("unexpected managed set: %+v", expected)
 	}
 
 	if total := informer.totalHandlers(); total != 1 {
@@ -280,7 +280,7 @@ func TestRegistrar_RemoveWatch_Idempotent(t *testing.T) {
 	// Should no longer be watching.
 	managed = wm.GetManagedGVK()
 	if len(managed) > 0 {
-		t.Errorf("unexpected manged set after removing last registrar: %+v", expected)
+		t.Errorf("unexpected managed set after removing last registrar: %+v", expected)
 		return
 	}
 
