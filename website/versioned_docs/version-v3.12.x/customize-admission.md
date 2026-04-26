@@ -12,7 +12,7 @@ the installed constraints and a second webhook for checking labels on namespace 
 that would result in bypassing constraints for the namespace. The namespace-label webhook
 is necessary to prevent a privilege escalation where the permission to add a label to a
 namespace is equivalent to the ability to bypass all constraints for that namespace.
-You can read more about the ability to exempt namespaces by label [here](exempt-namespaces.md#exempting-namespaces-from-the-gatekeeper-admission-webhook-using---exempt-namespace-flag).
+You can read more about the [ability to exempt namespaces by label](exempt-namespaces.md#exempting-namespaces-from-the-gatekeeper-admission-webhook-using---exempt-namespace-flag).
 
 Because Kubernetes adds features with each version, if you want to know how the webhook can be configured it
 is best to look at the official documentation linked at the top of this section. However, two particularly important
@@ -65,7 +65,7 @@ It is possible to improve the likelihood of enforcement by configuring the webho
 
 ### How to Enable Validation of Delete Operations
 
-To enable Delete operations for the `validation.gatekeeper.sh` admission webhook, add "DELETE" to the list of operations in the `gatekeeper-validating-webhook-configuration` ValidatingWebhookConfiguration as seen in this deployment manifest of gatekeeper: [here](https://github.com/open-policy-agent/gatekeeper/blob/v3.1.0-beta.10/deploy/gatekeeper.yaml#L792-L794)
+To enable Delete operations for the `validation.gatekeeper.sh` admission webhook, add "DELETE" to the list of operations in the `gatekeeper-validating-webhook-configuration` ValidatingWebhookConfiguration as seen in this [deployment manifest of gatekeeper](https://github.com/open-policy-agent/gatekeeper/blob/v3.1.0-beta.10/deploy/gatekeeper.yaml#L792-L794).
 
  So you have
  ```YAML

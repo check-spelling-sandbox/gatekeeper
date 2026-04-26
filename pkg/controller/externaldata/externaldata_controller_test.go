@@ -87,7 +87,7 @@ func TestReconcile(t *testing.T) {
 		},
 	}
 
-	// Setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())

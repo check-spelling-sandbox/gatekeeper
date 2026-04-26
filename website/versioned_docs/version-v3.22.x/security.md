@@ -69,7 +69,7 @@ To retrieve [SBOM](https://docs.docker.com/build/attestations/sbom/) for all arc
 docker buildx imagetools inspect openpolicyagent/gatekeeper:v3.12.0-rc.0 --format '{{ json .SBOM }}'
 ```
 
-For specific architecutes (like `linux/amd64`), please run:
+For specific architectures (like `linux/amd64`), please run:
 ```shell
 docker buildx imagetools inspect openpolicyagent/gatekeeper:v3.12.0-rc.0 --format '{{ json .SBOM }}' | jq -r '.["linux/amd64"]'
 ```

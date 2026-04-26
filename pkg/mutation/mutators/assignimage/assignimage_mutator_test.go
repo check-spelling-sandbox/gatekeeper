@@ -147,7 +147,7 @@ func TestMutate(t *testing.T) {
 			fn:  podTest("library/busybox:new"),
 		},
 		{
-			name: "mutate path and tag with missing image",
+			name: "mutate path and tag without image",
 			cfg: &aiTestConfig{
 				applyTo:  []match.ApplyTo{{Groups: []string{""}, Versions: []string{"v1"}, Kinds: []string{"Foo"}}},
 				location: `spec.containers[name:foo].image`,

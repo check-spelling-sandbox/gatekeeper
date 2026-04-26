@@ -304,7 +304,7 @@ func TestConfig_DeleteSyncResources(t *testing.T) {
 
 	g := gomega.NewGomegaWithT(t)
 
-	// setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
@@ -481,7 +481,7 @@ func TestConfig_CacheContents(t *testing.T) {
 	ctx, cancelFunc := context.WithCancel(context.Background())
 	defer cancelFunc()
 
-	// Setup the Manager and Controller.
+	// Set up the Manager and Controller.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
 	g := gomega.NewGomegaWithT(t)
@@ -598,7 +598,7 @@ func TestConfig_Retries(t *testing.T) {
 	}
 	instance := configFor([]schema.GroupVersionKind{nsGVK, configMapGVK})
 
-	// Setup the Manager and Controller.
+	// Set up the Manager and Controller.
 	mgr, wm := setupManager(t)
 	c := testclient.NewRetryClient(mgr.GetClient())
 
@@ -650,7 +650,7 @@ func TestConfig_Retries(t *testing.T) {
 	rec.reader = fakes.SpyReader{
 		Reader: mgr.GetCache(),
 		ListFunc: func(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-			// return as many syntenthic failures as there are registered for this kind
+			// return as many synthetic failures as there are registered for this kind
 			if fi.CheckFailures(list.GetObjectKind().GroupVersionKind().Kind) {
 				return fmt.Errorf("synthetic failure")
 			}
@@ -988,11 +988,11 @@ type testExpectations interface {
 	IsExpecting(gvk schema.GroupVersionKind, nsName types.NamespacedName) bool
 }
 
-func deleteResource(ctx context.Context, c client.Client, resounce *unstructured.Unstructured) error {
+func deleteResource(ctx context.Context, c client.Client, resource *unstructured.Unstructured) error {
 	if ctx.Err() != nil {
 		ctx = context.Background()
 	}
-	err := c.Delete(ctx, resounce)
+	err := c.Delete(ctx, resource)
 	if apierrors.IsNotFound(err) {
 		// resource does not exist, this is good
 		return nil

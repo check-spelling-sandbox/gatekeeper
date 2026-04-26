@@ -94,7 +94,7 @@ func TestAggregateResponses(t *testing.T) {
 }
 
 // Test_AggregateStats is meant to show that StatsEntry objects are properly added
-// fron child to parent when using the AggregateStats function. IT IS NOT meant to
+// from child to parent when using the AggregateStats function. IT IS NOT meant to
 // test StatsEntry objects themselves.
 func Test_AggregateStats(t *testing.T) {
 	tests := []struct {

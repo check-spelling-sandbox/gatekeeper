@@ -168,7 +168,7 @@ func (s *mutatorState) mutateInternal(current interface{}, depth int) (bool, int
 
 func (s *mutatorState) setListElementToValue(currentAsList []interface{}, listPathEntry *parser.List, depth int) (bool, []interface{}, error) {
 	if listPathEntry.Glob {
-		return false, nil, fmt.Errorf("last path entry can not be globbed")
+		return false, nil, fmt.Errorf("last path entry cannot be globbed")
 	}
 
 	newValueAsObject, err := s.setter.KeyedListValue()

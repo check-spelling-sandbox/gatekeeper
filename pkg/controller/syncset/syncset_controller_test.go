@@ -54,7 +54,7 @@ func Test_ReconcileSyncSet(t *testing.T) {
 
 	testutils.StartManager(ctx, t, *testRes.mgr)
 
-	require.NoError(t, testRes.k8sclient.Create(ctx, configMap), fmt.Sprintf("creating ConfigMap %s", "cm1-mame"))
+	require.NoError(t, testRes.k8sclient.Create(ctx, configMap), fmt.Sprintf("creating ConfigMap %s", "cm1-name"))
 	require.NoError(t, testRes.k8sclient.Create(ctx, pod), fmt.Sprintf("creating Pod %s", "pod1-name"))
 
 	tts := []struct {

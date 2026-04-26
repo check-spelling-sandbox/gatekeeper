@@ -50,7 +50,7 @@ func Test_ObjectTracker_Unpopulated_Is_Unsatisfied(t *testing.T) {
 	}
 }
 
-// Verify that an populated tracker with no expectations is satisfied.
+// Verify that a populated tracker with no expectations is satisfied.
 func Test_ObjectTracker_No_Expectations(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 	ot.ExpectationsDone()
@@ -59,7 +59,7 @@ func Test_ObjectTracker_No_Expectations(t *testing.T) {
 	}
 }
 
-// Verify that that multiple expectations are tracked correctly.
+// Verify that multiple expectations are tracked correctly.
 func Test_ObjectTracker_Multiple_Expectations(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 
@@ -116,7 +116,7 @@ func Test_ObjectTracker_Terminated_Expect(t *testing.T) {
 	}
 }
 
-// Verify that that expectations can be canceled.
+// Verify that expectations can be canceled.
 func Test_ObjectTracker_Canceled_Expectations(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 
@@ -152,7 +152,7 @@ func Test_ObjectTracker_Canceled_Expectations(t *testing.T) {
 	}
 }
 
-// Verify that that duplicate expectations only need a single observation.
+// Verify that duplicate expectations only need a single observation.
 func Test_ObjectTracker_Duplicate_Expectations(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 
@@ -178,7 +178,7 @@ func Test_ObjectTracker_Duplicate_Expectations(t *testing.T) {
 	}
 }
 
-// Verify that that satisfied expectations cannot be re-established.
+// Verify that satisfied expectations cannot be re-established.
 func Test_ObjectTracker_Satisfaction_Final(t *testing.T) {
 	ot := newObjTracker(schema.GroupVersionKind{}, nil)
 

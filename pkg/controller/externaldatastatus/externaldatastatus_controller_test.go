@@ -398,20 +398,20 @@ func TestReconcile_E2E(t *testing.T) {
 		g.Expect(k8sClient.Delete(ctx, &providerObj)).Should(gomega.Succeed())
 	})
 
-	t.Run("Reconcile with non-existent Provider", func(t *testing.T) {
+	t.Run("Reconcile with nonexistent Provider", func(t *testing.T) {
 		reconciler := newReconciler(mgr)
 
-		// Try to reconcile a non-existent provider
-		nonExistentRequest := reconcile.Request{
+		// Try to reconcile a nonexistent provider
+		nonexistentRequest := reconcile.Request{
 			NamespacedName: types.NamespacedName{
-				Name:      "non-existent-provider",
+				Name:      "nonexistent-provider",
 				Namespace: util.GetNamespace(),
 			},
 		}
 
-		result, err := reconciler.Reconcile(ctx, nonExistentRequest)
-		g.Expect(err).Should(gomega.BeNil(), "Reconciling non-existent provider should not return an error")
-		g.Expect(result).Should(gomega.Equal(reconcile.Result{}), "Result should be empty for non-existent provider")
+		result, err := reconciler.Reconcile(ctx, nonexistentRequest)
+		g.Expect(err).Should(gomega.BeNil(), "Reconciling nonexistent provider should not return an error")
+		g.Expect(result).Should(gomega.Equal(reconcile.Result{}), "Result should be empty for nonexistent provider")
 	})
 
 	t.Run("Reconcile with status errors and recover", func(t *testing.T) {

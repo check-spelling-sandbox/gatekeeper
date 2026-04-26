@@ -61,7 +61,7 @@ func init() {
 	)
 }
 
-// newStatsReporter creaters a reporter for webhook metrics.
+// newStatsReporter creates a reporter for webhook metrics.
 func newStatsReporter() (StatsReporter, error) {
 	if r == nil {
 		var err error

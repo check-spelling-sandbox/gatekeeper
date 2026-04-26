@@ -198,7 +198,7 @@ func TemplateToPolicyDefinitionWithWebhookConfig(template *templates.ConstraintT
 	}
 
 	// Build validations from template
-	validations, err := source.GetV1Beta1Validatons()
+	validations, err := source.GetV1Beta1Validations()
 	if err != nil {
 		return nil, err
 	}

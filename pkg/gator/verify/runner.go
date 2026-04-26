@@ -29,7 +29,7 @@ import (
 // Runner defines logic independent of how tests are run and the results are
 // printed.
 type Runner struct {
-	// filesystem is the filesystem the Runner interacts with to read Suites and objects.
+	// filesystem is the filesystem with which the Runner interacts to read Suites and objects.
 	filesystem fs.FS
 
 	// newClient instantiates a Client for compiling Templates/Constraints, and

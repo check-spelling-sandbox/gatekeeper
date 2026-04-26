@@ -873,7 +873,7 @@ func TestLoadBundlesFile(t *testing.T) {
 func TestLoadBundlesFile_NonExistent(t *testing.T) {
 	_, err := loadBundlesFile("/nonexistent/bundles.yaml")
 	if err == nil {
-		t.Error("Expected error for non-existent file")
+		t.Error("Expected error for nonexistent file")
 	}
 }
 

@@ -140,7 +140,7 @@ func TestValidationErrors(t *testing.T) {
 
 	// ensure that GetSource() runs validation. Do not change this behavior.
 	for _, test := range tests {
-		t.Run(fmt.Sprintf("%v for GetSurce", test.name), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%v for GetSource", test.name), func(t *testing.T) {
 			rawSrc := test.source.MustToUnstructured()
 			code := templates.Code{
 				Engine: Name,

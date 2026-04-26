@@ -47,7 +47,7 @@ func newReplayTracker() *replayTracker {
 	}
 }
 
-// SetIntent sets whether a registrar wants a replay or not.
+// SetIntent sets whether or not a registrar wants a replay.
 // Setting this before sending a replay request avoids a
 // race condition where a replay request is canceled before
 // the original request is sent.

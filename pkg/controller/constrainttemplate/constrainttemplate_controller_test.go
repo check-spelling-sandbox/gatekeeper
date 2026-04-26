@@ -349,7 +349,7 @@ func TestReconcile(t *testing.T) {
 	// fs.Parse([]string{"--alsologtostderr", "-v=10"})
 	// klog.SetOutput(os.Stderr)
 
-	// Setup the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
+	// Set up the Manager and Controller.  Wrap the Controller Reconcile function so it writes each request to a
 	// channel when it is finished.
 	mgr, wm := testutils.SetupManager(t, cfg)
 	c := testclient.NewRetryClient(mgr.GetClient())
@@ -758,9 +758,9 @@ func TestReconcile(t *testing.T) {
 		}
 	})
 
-	t.Run("VapBinding should not be created with missing CEL", func(t *testing.T) {
+	t.Run("VapBinding should not be created without CEL", func(t *testing.T) {
 		suffix := "VapBindingShouldNotBeCreatedMissingCEL"
-		logger.Info("Running test: VapBinding should not be created with missing CEL")
+		logger.Info("Running test: VapBinding should not be created without CEL")
 		constraintTemplate := makeReconcileConstraintTemplate(suffix)
 		cstr := newDenyAllCstr(suffix)
 		t.Cleanup(testutils.DeleteObjectAndConfirm(ctx, t, c, expectedCRD(suffix)))
@@ -811,7 +811,7 @@ func TestReconcile(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		err := isConstraintStatuErrorAsExpected(ctx, c, suffix, true, constraint.ErrVAPConditionsNotSatisfied.Error())
+		err := isConstraintStatusErrorAsExpected(ctx, c, suffix, true, constraint.ErrVAPConditionsNotSatisfied.Error())
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -819,7 +819,7 @@ func TestReconcile(t *testing.T) {
 
 	t.Run("Error should not be present on constraint when VAP generation if off and VAPB generation is on for templates without CEL", func(t *testing.T) {
 		suffix := "ErrorShouldNotBePresentOnConstraint"
-		logger.Info("Running test: Error should not be present on constraint when VAP generation is off and VAPB generation is on for templates wihout CEL")
+		logger.Info("Running test: Error should not be present on constraint when VAP generation is off and VAPB generation is on for templates without CEL")
 		require.NoError(t, flag.CommandLine.Parse([]string{"--default-create-vap-for-templates", "false"}))
 		t.Cleanup(func() {
 			require.NoError(t, flag.CommandLine.Parse([]string{"--default-create-vap-for-templates", "true"}))
@@ -837,7 +837,7 @@ func TestReconcile(t *testing.T) {
 			logger.Error(err, "create cstr")
 			t.Fatal(err)
 		}
-		err := isConstraintStatuErrorAsExpected(ctx, c, suffix, false, "")
+		err := isConstraintStatusErrorAsExpected(ctx, c, suffix, false, "")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -912,7 +912,7 @@ func TestReconcile(t *testing.T) {
 			// check if vapbinding resource exists now
 			vapBinding := &admissionregistrationv1beta1.ValidatingAdmissionPolicyBinding{}
 			if err := c.Get(ctx, types.NamespacedName{Name: transform.GetVAPBindingName(cstr.GetKind(), cstr.GetName())}, vapBinding); err != nil {
-				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets covarage time > 30s to cover the default wait.
+				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets coverage time > 30s to cover the default wait.
 				time.Sleep(10 * time.Millisecond)
 				return err
 			}
@@ -1381,7 +1381,7 @@ func TestReconcile(t *testing.T) {
 			// check if vapbinding resource exists now
 			vapBinding := &admissionregistrationv1.ValidatingAdmissionPolicyBinding{}
 			if err := c.Get(ctx, types.NamespacedName{Name: transform.GetVAPBindingName(cstr.GetKind(), cstr.GetName())}, vapBinding); err != nil {
-				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets covarage time > 30s to cover the default wait.
+				// Since tests retries 3000 times at 100 retries per second, adding sleep makes sure that this test gets coverage time > 30s to cover the default wait.
 				time.Sleep(10 * time.Millisecond)
 				return err
 			}
@@ -2145,7 +2145,7 @@ func TestReconcile_VAPBV1RecreatedWhenDeleted(t *testing.T) {
 func TestReconcile_DeleteConstraintResources(t *testing.T) {
 	logger.Info("Running test: Cancel the expectations when constraint gets deleted")
 
-	// Setup the Manager
+	// Set up the Manager
 	mgr, wm := testutils.SetupManager(t, cfg)
 	c := testclient.NewRetryClient(mgr.GetClient())
 
@@ -2331,7 +2331,7 @@ func stringSliceFromOps(ops []admissionregistrationv1.OperationType) []string {
 	return result
 }
 
-func isConstraintStatuErrorAsExpected(ctx context.Context, c client.Client, suffix string, wantErr bool, errMsg string) error {
+func isConstraintStatusErrorAsExpected(ctx context.Context, c client.Client, suffix string, wantErr bool, errMsg string) error {
 	return retry.OnError(testutils.ConstantRetry, func(_ error) bool {
 		return true
 	}, func() error {

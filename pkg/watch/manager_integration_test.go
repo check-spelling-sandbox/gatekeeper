@@ -385,7 +385,7 @@ func Test_Registrar_Replay(t *testing.T) {
 	// Create some resources
 	for _, obj := range fixtures {
 		if ctx.Err() != nil {
-			t.Fatalf("timout while creating fixtures")
+			t.Fatalf("timeout while creating fixtures")
 		}
 		err := c.Create(ctx, obj)
 		if err != nil {
@@ -398,7 +398,7 @@ func Test_Registrar_Replay(t *testing.T) {
 		t.Fatalf("waiting for live watches: %v", err)
 	}
 
-	// Setup a second watcher, it should receive the same events replayed instead of live:
+	// Set up a second watcher, it should receive the same events replayed instead of live:
 	c2 := setupController("test-controller-2", gvk)
 	if err := waitForExpected(ctx, fixtures, c2, namespace); err != nil {
 		t.Fatalf("waiting for replayed watches: %v", err)

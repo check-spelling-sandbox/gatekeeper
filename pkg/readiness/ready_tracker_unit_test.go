@@ -63,7 +63,7 @@ func (w *WrapFakeClientWithMutex) List(ctx context.Context, list client.ObjectLi
 var (
 	testConstraintTemplate = templates.ConstraintTemplate{
 		ObjectMeta: v1.ObjectMeta{
-			Name: "test-contraint-template",
+			Name: "test-constraint-template",
 		},
 		Spec: templates.ConstraintTemplateSpec{
 			CRD: templates.CRD{

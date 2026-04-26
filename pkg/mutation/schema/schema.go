@@ -140,8 +140,8 @@ func (db *DB) remove(id types.ID) {
 			// This means there's a bug in the schema code. This means a mutator
 			// is bound to this gvk with a previous call to upsert, but for some
 			// reason there is no corresponding schema.
-			log.Error(nil, "mutator associated with missing schema", "mutator", id, "schema", gvk)
-			panic(fmt.Sprintf("mutator %v associated with missing schema %v", id, gvk))
+			log.Error(nil, "mutator associated is missing schema", "mutator", id, "schema", gvk)
+			panic(fmt.Sprintf("mutator %v associated is missing schema %v", id, gvk))
 		}
 		s.Remove(id, cachedMutator.Path().Nodes, cachedMutator.TerminalType(), cachedMutator.MustTerminate())
 		db.schemas[gvk] = s

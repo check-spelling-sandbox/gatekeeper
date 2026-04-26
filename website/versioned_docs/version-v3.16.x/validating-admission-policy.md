@@ -71,7 +71,7 @@ Edit the applicable deployments (`controller-manager` and `audit`), and update t
 ## Policy updates to add CEL
 To see how it works, check out this [demo](https://github.com/open-policy-agent/gatekeeper/tree/master/demo/k8s-validating-admission-policy)
 
-Example `K8sRequiredLabels` constraint template using the `K8sNativeValidation` engine and CEL expressions that requires resources to contain specified labels with values matching provided regular expressions. A similar policy written in Rego can be seen [here](https://open-policy-agent.github.io/gatekeeper-library/website/validation/requiredlabels)
+Example `K8sRequiredLabels` constraint template using the `K8sNativeValidation` engine and CEL expressions that requires resources to contain specified labels with values matching provided regular expressions. See a [similar policy written in Rego](https://open-policy-agent.github.io/gatekeeper-library/website/validation/requiredlabels).
 
 ```yaml
 apiVersion: templates.gatekeeper.sh/v1

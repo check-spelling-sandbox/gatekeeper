@@ -354,7 +354,7 @@ func Test_Test_withStats(t *testing.T) {
 	assert.NoError(t, err)
 
 	actualStats := resps.StatsEntries
-	expectesSE := &instrumentation.StatsEntry{
+	expectsSE := &instrumentation.StatsEntry{
 		Scope:    "template",
 		StatsFor: "NeverValidate",
 		Stats: []*instrumentation.Stat{
@@ -394,7 +394,7 @@ func Test_Test_withStats(t *testing.T) {
 	// test.go calls review on all 3 objects (template, constraint, objToReview)
 	// so we need 3 "almost" copies of the stat entry above.
 	expectedStats := []*instrumentation.StatsEntry{}
-	expectedStats = append(expectedStats, expectesSE, expectesSE, expectesSE)
+	expectedStats = append(expectedStats, expectsSE, expectsSE, expectsSE)
 
 	diff := cmp.Diff(actualStats, expectedStats, cmpopts.IgnoreFields(
 		instrumentation.Stat{}, "Value",

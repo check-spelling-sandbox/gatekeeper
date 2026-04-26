@@ -38,7 +38,7 @@ func Test_LogStatsEntries(t *testing.T) {
 		[]*instrumentation.StatsEntry{
 			{
 				Scope:    "someScope",
-				StatsFor: "someConstranint",
+				StatsFor: "someConstraint",
 				Stats: []*instrumentation.Stat{
 					{
 						Name:  "someStat",
@@ -61,7 +61,7 @@ func Test_LogStatsEntries(t *testing.T) {
 	)
 
 	expectedLogLine := fmt.Sprintf("\"msg\":\"test message\",\"execution_stats\":[{\"scope\":\"someScope\","+
-		"\"statsFor\":\"someConstranint\",\"stats\":[{\"name\":\"someStat\",\"value\":\"someValue\","+
+		"\"statsFor\":\"someConstraint\",\"stats\":[{\"name\":\"someStat\",\"value\":\"someValue\","+
 		"\"source\":{\"type\":\"someType\",\"value\":\"someValue\"},\"description\":\"%s\"}],"+
 		"\"labels\":[{\"name\":\"someLabel\",\"value\":\"someLabelValue\"}]}]}\n", instrumentation.UnknownDescription)
 	require.Contains(t, testBuf.String(), expectedLogLine)

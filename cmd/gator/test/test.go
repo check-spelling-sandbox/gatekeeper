@@ -81,11 +81,11 @@ func init() {
 }
 
 func run(_ *cobra.Command, _ []string) {
-	unstrucs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
+	unstructs, err := reader.ReadSources(flagFilenames, flagImages, flagTempDir)
 	if err != nil {
 		cmdutils.ErrFatalf("reading: %v", err)
 	}
-	if len(unstrucs) == 0 {
+	if len(unstructs) == 0 {
 		cmdutils.ErrFatalf("no input data identified")
 	}
 
@@ -105,7 +105,7 @@ func run(_ *cobra.Command, _ []string) {
 		opts = append(opts, gator.WithPrintHook(printBuf))
 	}
 
-	responses, err := test.Test(unstrucs, opts...)
+	responses, err := test.Test(unstructs, opts...)
 	if err != nil {
 		cmdutils.ErrFatalf("auditing objects: %v", err)
 	}

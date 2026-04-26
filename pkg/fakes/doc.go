@@ -4,5 +4,5 @@
 //
 // The primary purpose of these objects is to aid writing tests, but that is not
 // this package's only purpose. These objects are also used in debugging logic
-// which is compiled in to production code.
+// which is compiled into production code.
 package fakes

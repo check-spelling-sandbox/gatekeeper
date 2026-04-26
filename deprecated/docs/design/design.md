@@ -30,7 +30,7 @@ The evaluation is a call to `OPA`. This call produces one or more decisions. Eac
 
 ### open-policy agent(OPA)
 
-open-policy-agent(OPA) service is the policy engine for the kubernetes policy controller. It performs evaluations as called by `gatekeeper`. For our `audit` requirement OPA can not be used as a standalone. We also chose to use OPA as a service (instead of using as a lib) as it allows to
+open-policy-agent(OPA) service is the policy engine for the kubernetes policy controller. It performs evaluations as called by `gatekeeper`. For our `audit` requirement OPA cannot be used as a standalone. We also chose to use OPA as a service (instead of using as a lib) as it allows to
 
 1. Decouple the kubernetes admission controller logic from the policy engine.
 2. When needed, the policy engine can be hosted outside of the cluster.
@@ -65,7 +65,7 @@ deny[{
 Policy consists of:
 
 * `id`: uniquely identifies a policy on a kubernetes cluster.
-* `resource`: allows filtering on the resource the policy is targeting, this includes the `kind` which same as kubernetes definition of `kind` of the object,`namespace` is the namespace and name of the object being evaluated.
+* `resource`: allows filtering on the resource targeted by the policy, this includes the `kind` which same as kubernetes definition of `kind` of the object,`namespace` is the namespace and name of the object being evaluated.
 * `resolution`: the decision of a single opa policy query, consists of `message` and optionally `patches` .Note that the patch field is an array of JSON patch operations. This means a single policy can patch different parts of the object being evaluated.
 
 ### Examples
@@ -103,7 +103,7 @@ package authorization
 deny[{
  	"id": "exec-pods-kube-system-istio-system",
  	"resource": {"kind": "pods","namespace": namespace,"name": name},
- 	"resolution": {"message": "Your're not allowed to exec/cp on Pods in kube-system & istio-system"},
+ 	"resolution": {"message": "You aren't allowed to exec/cp on Pods in kube-system & istio-system"},
 }]
 {
  	matches[["pods", namespace, name, resource]]

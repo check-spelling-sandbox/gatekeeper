@@ -408,7 +408,7 @@ func TestTriggerConstraintTemplateReconciliation(t *testing.T) {
 		}
 
 		err := reconciler.triggerConstraintTemplateReconciliation(ctx)
-		require.NoError(t, err, "Should trigger ConstraintTemplate reonciliation without error")
+		require.NoError(t, err, "Should trigger ConstraintTemplate reconciliation without error")
 
 		err = retry.OnError(testutils.ConstantRetry, func(_ error) bool {
 			return true
@@ -436,7 +436,7 @@ func TestTriggerConstraintTemplateReconciliation(t *testing.T) {
 		}
 
 		err := reconciler.triggerConstraintTemplateReconciliation(ctx)
-		require.NoError(t, err, "Should trigger ConstraintTemplate reonciliation without error")
+		require.NoError(t, err, "Should trigger ConstraintTemplate reconciliation without error")
 
 		time.Sleep(500 * time.Millisecond)
 	})
@@ -451,7 +451,7 @@ func TestTriggerConstraintTemplateReconciliation(t *testing.T) {
 		}
 
 		err := reconciler.triggerConstraintTemplateReconciliation(ctx)
-		require.NoError(t, err, "Should trigger ConstraintTemplate reonciliation without error")
+		require.NoError(t, err, "Should trigger ConstraintTemplate reconciliation without error")
 	})
 }
 

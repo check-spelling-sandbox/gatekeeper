@@ -34,7 +34,7 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ## Search
 
-Gatekeeper docs website uses Algolia DocSearch service. Please see [here](https://docusaurus.io/docs/search) for more information.
+Gatekeeper docs website uses [Algolia DocSearch](https://docusaurus.io/docs/search#using-algolia-docsearch) service.
 
 If the search index has any issues:
 

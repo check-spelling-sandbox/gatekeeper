@@ -102,7 +102,7 @@ def deploy_gatekeeper():
     for resource in ["gatekeeper-audit", "gatekeeper-controller-manager", "gatekeeper-update-namespace-label", "gatekeeper-update-crds-hook"]:
         k8s_resource(resource, labels=["controllers"])
 
-    # port-foward the metrics server
+    # port-forward the metrics server
     if "audit.metricsPort" in helm_values:
         port = int(helm_values["audit.metricsPort"])
         k8s_resource(

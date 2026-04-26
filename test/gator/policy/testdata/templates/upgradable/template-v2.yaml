@@ -1,4 +1,4 @@
-# Test ConstraintTemplate: Upgradeable (v2.0.0)
+# Test ConstraintTemplate: Upgradable (v2.0.0)
 #
 # This template is used for testing the upgrade functionality.
 # It represents a newer version of a policy.
@@ -6,14 +6,14 @@
 apiVersion: templates.gatekeeper.sh/v1
 kind: ConstraintTemplate
 metadata:
-  name: test-upgradeable
+  name: test-upgradable
   annotations:
     description: "Test template for upgrade testing - version 2.0.0"
 spec:
   crd:
     spec:
       names:
-        kind: TestUpgradeable
+        kind: TestUpgradable
       validation:
         openAPIV3Schema:
           type: object
@@ -27,10 +27,10 @@ spec:
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
-        package testupgradeable
+        package testupgradable
 
         # v2.0.0: Added severity field support
         violation[{"msg": msg, "details": {"severity": severity}}] {
           severity := object.get(input.parameters, "severity", "medium")
-          msg := sprintf("Upgradeable policy violation (severity: %v)", [severity])
+          msg := sprintf("Upgradable policy violation (severity: %v)", [severity])
         }

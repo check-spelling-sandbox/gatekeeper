@@ -235,7 +235,7 @@ func (s setter) setValuePrune(obj map[string]interface{}, key string) error {
 		return fmt.Errorf("%+v is not a list of values, cannot treat it as a set", val)
 	}
 
-	// we are assuming order is important, otherwise this could be done
+	// we are assuming order is important; otherwise, this could be done
 	// more cheaply by swapping values
 	filtered := make([]interface{}, 0, len(vals))
 	for _, existing := range vals {

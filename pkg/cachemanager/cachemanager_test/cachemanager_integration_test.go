@@ -63,7 +63,7 @@ func TestCacheManager_replay_retries(t *testing.T) {
 	reader := fakes.SpyReader{
 		Reader: c,
 		ListFunc: func(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-			// return as many syntenthic failures as there are registered for this kind
+			// return as many synthetic failures as there are registered for this kind
 			if fi.CheckFailures(list.GetObjectKind().GroupVersionKind().Kind) {
 				return fmt.Errorf("synthetic failure")
 			}
@@ -270,8 +270,8 @@ func TestCacheManager_instance_updates(t *testing.T) {
 	}, eventuallyTimeout, eventuallyTicker)
 }
 
-func deleteResource(ctx context.Context, c client.Client, resounce *unstructured.Unstructured) error {
-	err := c.Delete(ctx, resounce)
+func deleteResource(ctx context.Context, c client.Client, resource *unstructured.Unstructured) error {
+	err := c.Delete(ctx, resource)
 	if apierrors.IsNotFound(err) {
 		// resource does not exist, this is good
 		return nil

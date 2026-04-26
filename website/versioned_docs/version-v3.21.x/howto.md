@@ -85,7 +85,7 @@ The `match` field defines which resources the constraint will be applied to. It 
    * `namespaceSelector` is a label selector against an object's containing namespace or the object itself, if the object is a namespace.
    * `name` is the name of a Kubernetes object.  If defined, it matches against objects with the specified name.  Name also supports a prefix-based glob.  For example, `name: pod-*` matches both `pod-a` and `pod-b`.
 
-Note that if multiple matchers are specified, a resource must satisfy each top-level matcher (`kinds`, `namespaces`, etc.) to be in scope. Each top-level matcher has its own semantics for what qualifies as a match. An empty matcher, a undefined `match` field, is deemed to be inclusive (matches everything). Also understand `namespaces`, `excludedNamespaces`, and `namespaceSelector` will match on cluster scoped resources which are not namespaced. To avoid this adjust the `scope` to `Namespaced`.
+Note that if multiple matchers are specified, a resource must satisfy each top-level matcher (`kinds`, `namespaces`, etc.) to be in scope. Each top-level matcher has its own semantics for what qualifies as a match. An empty matcher, an undefined `match` field, is deemed to be inclusive (matches everything). Also understand `namespaces`, `excludedNamespaces`, and `namespaceSelector` will match on cluster scoped resources which are not namespaced. To avoid this adjust the `scope` to `Namespaced`.
 
 ### The parameters field
 
@@ -138,5 +138,5 @@ kubectl get constraints
 ```
 
 ### Input Review
-You can view information on the `input.review` object that Gatekeeper takes as input [here](./input.md)
+You can view information on the [`input.review` object](./input.md) that Gatekeeper takes.
 

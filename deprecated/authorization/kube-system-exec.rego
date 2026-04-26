@@ -9,7 +9,7 @@ deny[{
 		"namespace": namespace,
 		"name": name,
 	},
-	"resolution": {"message": "Your're not allowed to exec/cp on Pods in kube-system"},
+	"resolution": {"message": "You aren't allowed to exec/cp on Pods in kube-system"},
 }] {
 	matches[[kind, namespace, name, resource]]
 
